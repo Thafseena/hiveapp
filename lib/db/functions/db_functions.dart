@@ -8,4 +8,6 @@ ValueNotifier<List<StudentModel>> studentListNotifier=ValueNotifier([]);
 void addStudent(StudentModel value){
   // studentList.add(value);
   studentListNotifier.value.add(value);
+  studentListNotifier.notifyListeners();
+  debugPrint(value.toString());
 }

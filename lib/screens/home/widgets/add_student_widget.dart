@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hiveapp/db/functions/db_functions.dart';
+import 'package:hiveapp/db/model/data_model.dart';
 
 class AddStudentWidget extends StatelessWidget {
    AddStudentWidget({super.key});
@@ -47,8 +49,10 @@ class AddStudentWidget extends StatelessWidget {
    final _age=_agecontroller.text.trim();
    if(_name.isEmpty||_age.isEmpty){
     return;
-   }else{
-    print('$_name $_age');
    }
+    print('$_name $_age');
+   final _student= StudentModel(name: _name, age: _age);
+    addStudent(_student);
+   
   }
 }
