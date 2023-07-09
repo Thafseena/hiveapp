@@ -10,7 +10,8 @@ Future<void> addStudent(StudentModel value) async {
   // studentList.add(value);
   // studentListNotifier.value.add(value);
  final studDB=await Hive.openBox<StudentModel>('stud_db');
- studDB.add(value);//adding to database
+ final _id= await studDB.add(value);//adding to database
+  value.id=_id;
  studentListNotifier.value.add(value);
   studentListNotifier.notifyListeners();
   // debugPrint(value.toString());
@@ -21,4 +22,11 @@ Future<void> getAllStudents()async{
  studentListNotifier.value.clear();
  studentListNotifier.value.addAll(studDB.values);
  studentListNotifier.notifyListeners();
+}
+
+Future<void> deleteStudent(int id)async{
+   final studDB=await Hive.openBox<StudentModel>('stud_db');
+   await studDB.delete(id);
+   getAllStudents();
+
 }

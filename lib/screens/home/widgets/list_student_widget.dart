@@ -16,6 +16,14 @@ class ListStudentWidget extends StatelessWidget {
          return ListTile(
           title: Text(data.name),
           subtitle: Text(data.age),
+          trailing: IconButton(onPressed: (){
+            if(data.id !=null){
+             deleteStudent(data.id!);
+            }else{
+              debugPrint("Unable to delete ........");
+            }
+            
+          }, icon: Icon(Icons.delete,color: Colors.red,)),
          );
          },
           itemCount: studentList.length, 
