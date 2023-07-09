@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hiveapp/db/functions/db_functions.dart';
 import 'package:hiveapp/screens/home/widgets/add_student_widget.dart';
 import 'package:hiveapp/screens/home/widgets/list_student_widget.dart';
 
@@ -7,6 +8,7 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getAllStudents();
     return Scaffold(
       body: SafeArea(
         child: Column(

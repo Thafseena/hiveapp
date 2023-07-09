@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:hiveapp/db/model/data_model.dart';
 import 'package:hiveapp/screens/home/screen_home.dart';
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+ await Hive.initFlutter();
+ if(!Hive.isAdapterRegistered(StudentModelAdapter().typeId)){
+   Hive.registerAdapter(StudentModelAdapter());
+ }
   runApp(const MyApp());
 }
 
